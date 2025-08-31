@@ -330,3 +330,49 @@ String str = String.valueOf(3);      // 결과 : "3"
 
 
 ## 02-4. 변수와 시스템 입출력
+> 프로그래밍 언어에는 시스템 **표준 출력 장치**와 **표준 입력 장치** 가 있다.  
+> 일반적으로 표준 출력 장치는 **모니터**🖥️, 표준 입력 장치는 **키보드**⌨️이다.  
+> 변수에 저장된 값을 모니터에 출력하는 방법과 키보드로부터 데이터를 익고 변수에 저장하는 방법을 알아보자!
+
+### ▶︎ 모니터로 변수값 출력하기
+시스템 표준 출력 장치인 **System.out**을 이용하여 출력한다!
+
+#### 📌 System.out의 메소드 종류
+| 메소드 | 의미 |
+|---|---|
+| println(내용) | 괄호 안의 내용을 **출력하고 행을 바꿔라** |
+| print(내용) | 괄호 안의 내용을 **출력만** 해라 |
+| printf("형식문자열", 값1, 값2, ...) | 괄호 안의 첫 번째 **문자열 형식대로 내용을 출력**해라 |
+
+**💡 printf 형식문자열**  
+<img width="600" height="150" alt="image" src="https://github.com/user-attachments/assets/24c73fdc-dadd-43bf-87c3-98c618789a68" />
+- % : 형식 문자열을 시작을 뜻함
+- argument_index$ : 형식 문자열에 포함될 값이 2개 이상일 경우 순번을 지정하는 역할
+  - 1$(첫 번째 값), 2$(두 번째 값)
+- flags : 빈자리를 채우는 방법
+  - 생략 : 왼쪽이 공백으로 채워짐
+  - '-' : 오른쪽이 공백으로 채워짐
+  - '0' : 공백 대신 0으로 채움
+- conversion : 제공되는 값의 타입에 따라 입력
+  - d(정수), f(실수), s(문자열)
+
+- 자주 사용되는 형식 문자열
+<img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/03bdb75f-7ac5-413e-a69c-8063697dad3e" />
+
+### ▶︎ 키보드에서 입력된 내용을 변수에 저장하기
+#### 📌 키보드에서 누른 키 한개씩 읽고 싶을 때
+키보드 **키 하나를 입력**하면 프로그램에서는 숫자로 된 **키코드**를 읽을 수 있다.
+키코드 읽기 위해서 **System.in의 read() 이용**
+
+**💡 주요 키코드**
+- 숫자, 알파벳 : ASCII 코드와 동일
+- 기능키
+  - ENTER키 : 다른 키와 다르게 캐리지 리턴과 라인 피드로 구성된 2개의 키코드가 입력됨, 따라서 2번에 걸쳐 읽어야함
+<img width="270" height="400" alt="image" src="https://github.com/user-attachments/assets/d9b19b7b-5993-42c0-ba01-3ad207889af4" />
+
+- 방향키
+<img width="270" height="180" alt="image" src="https://github.com/user-attachments/assets/061a9912-fec9-4e78-8284-0dae63c93df9" />
+
+#### 📌 통 문자열을 읽어야할 때
+**Scanner 클래스** 이용
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/5ce98a6a-d8e2-4165-b795-60589b203b6c" />
