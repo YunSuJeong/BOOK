@@ -223,3 +223,53 @@ scores[1] = new int[3];             // 두번째 배열은 길이 3
 ### ▶︎ 객체를 참조하는 배열
 기본 타입 배열은 각 항목에 직접 값을 가지고 있다.  
 그러나 **참조 타입 배열은 각 항목에 객체의 번지를 가지고 있다.**  
+
+
+
+## 05-3. 열거 타입 (enumeration type)
+열거타입이란 한정된 값만을 갖는 타입을 뜻한다.  
+열거 상수(enumeration constant)란 열거타입에 저장된 값이며, 상수 형태로 사용한다.
+ex) 요일(월-일), 계절(봄, 여름, 가을, 겨울)
+
+### ▶︎ 열거 타입 선언
+열거 타입을 선언하는 순서  
+1. 열거 타입의 이름 정하기
+2. 해당 이름으로 소스 파일(.java) 생성하기
+3. public enum 키워드로 열거 타입 선언하기
+  - 열거 타입 이름은 소스 파일 이름과 대소문자 모두 일치해야함
+  
+```java
+public enum Week { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY }
+```
+
+### ▶︎ 열거 타입 변수
+열거 타입을 선언한 후, 변수를 선언하여 사용할 수 있다.  
+**‼️ 열거 상수는 단독으로 사용할 수 없고, 반드시 '열거 타입.열거 상수' 형태로 사용해야 한다.**
+
+```java
+Week today = Week.SUNDAY;
+```
+ 
+**열거 타입도 참조 타입**이다.  
+따라서 **열거 상수는 객체**이고, 열거 타입 변수에 null값을 저장할 수 있다.  
+
+열거 타입 변수는 스택 영역에 생성되고, 변수에 저장되는 값은 열거 상수가 참조하는 객체의 번지이다.  
+따라서 today와 Week.SUNDAY는 서로 같은 객체를 참조한다.  
+즉, today == Week.SUNDAY 연산 결과는 true
+<img width="750" height="400" alt="image" src="https://github.com/user-attachments/assets/88ebd544-fece-4448-a74e-f0095acc5ea3" />
+
+#### 📌 Calendar 클래스
+- 컴퓨터의 날짜 및 요일, 시간을 얻기위해 자바가 제공하는 클래스  
+- getInstance() 메소드로 객체를 얻는다.
+- 객체를 얻은 후, get() 메소드를 이용하여 연, 월, 일, 요일, 시간, 분, 초를 얻을 수 있다.
+```java
+Calendar now = Calendar.getInstance();       // 객체 얻기
+
+int year = now.get(Calendar.YEAR);           // 연
+int month = now.get(Calendar.MONTH) + 1;     // 월(1~12)
+int day = now.get(Calendar.DAY_OF_MONTH);    // 일
+int week = now.get(Calendar.DAY_OF_WEEK);    // 요일(1~7), 일(1)~토(7)
+int hour = now.get(Calendar.HOUR);           // 시간
+int minute = now.get(Calendar.MINUTE);       // 분
+int second = now.get(Calendar.SECOND);       // 초
+```
